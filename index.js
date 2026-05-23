@@ -1,21 +1,21 @@
-const TelegramBot = require("node-telegram-bot-api");
 
-const token = "SEU_TOKEN_AQUI";
+const TelegramBot = require('node-telegram-bot-api');
+
+const token = 'SEU_TOKEN_AQUI';
 
 const bot = new TelegramBot(token, { polling: true });
 
-console.log("BOT ONLINE 🚀");
+const canal = '@universpromo';
 
-const canal = "@universpromo";
+// mensagem online
+bot.sendMessage(canal, '🚀 BOT ONLINE');
 
-bot.on("message", async (msg) => {
+// reenviar tudo que receber
+bot.on('message', (msg) => {
 
-    if (!msg.text) return;
+  // ignora comandos
+  if (msg.text.startsWith('/')) return;
 
-    // ignora mensagens do próprio canal
-    if (msg.chat.type === "channel") return;
-
-    // envia pro canal
-    bot.sendMessage(canal, msg.text);
+  bot.sendMessage(canal, msg.text);
 
 });

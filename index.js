@@ -1,8 +1,24 @@
 const TelegramBot = require("node-telegram-bot-api");
 
-const token = 
-"8605464110:AAHggkvlL23mDHcXnRjY_pQKxUoskTvCThc";
+const token = "SEU_TOKEN_AQUI";
 
-const bot = new TelegramBot(token);
+const bot = new TelegramBot(token, { polling: true });
 
-bot.sendMessage("@universpromo", "🚀 BOT ONLINE");
+console.log("BOT ONLINE 🚀");
+
+bot.on("message", async (msg) => {
+    
+    const chatId = msg.chat.id;
+
+    // ignora mensagens sem texto
+    if (!msg.text) return;
+
+    // responde qualquer mensagem
+    bot.sendMessage(chatId,
+`🔥 OFERTA RECEBIDA
+
+🛍️ Produto:
+${msg.text}
+
+⚡ Aproveite antes que acabe.`);
+});

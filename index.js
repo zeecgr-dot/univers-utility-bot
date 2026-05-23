@@ -6,19 +6,16 @@ const bot = new TelegramBot(token, { polling: true });
 
 console.log("BOT ONLINE 🚀");
 
-bot.on("message", async (msg) => {
-    
-    const chatId = msg.chat.id;
+const canal = "@universpromo";
 
-    // ignora mensagens sem texto
+bot.on("message", async (msg) => {
+
     if (!msg.text) return;
 
-    // responde qualquer mensagem
-    bot.sendMessage(chatId,
-`🔥 OFERTA RECEBIDA
+    // ignora mensagens do próprio canal
+    if (msg.chat.type === "channel") return;
 
-🛍️ Produto:
-${msg.text}
+    // envia pro canal
+    bot.sendMessage(canal, msg.text);
 
-⚡ Aproveite antes que acabe.`);
 });

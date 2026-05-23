@@ -1,4 +1,4 @@
-bot.sendMessage("@promocoesvip", "🚀 BOT ONLINE");
+bot.sendMessage("@universpromo", "🚀 BOT ONLINE");
 
 const token = 
 "8605464110:AAHggkvlL23mDHcXnRjY_pQKxUoskTvCThc";

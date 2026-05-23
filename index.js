@@ -5,4 +5,4 @@ UoskTvCThc";
 
 const bot = new TelegramBot(token);
 
-bot.sendMessage("@UniversUtilityBot", "🚀 BOT ONLINE");
+bot.sendMessage("@promocoesvip", "🚀 BOT ONLINE");

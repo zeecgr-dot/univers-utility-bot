@@ -9,7 +9,7 @@ const canal = '@universpromo';
 
 console.log('BOT ONLINE 🚀');
 
-bot.on('message', (msg) => {
+bot.on('message', async (msg) => {
 
   if (!msg.text) return;
 
@@ -20,8 +20,9 @@ bot.on('message', (msg) => {
   const produto = linhas[0] || 'Produto';
   const preco = linhas[1] || 'Preço';
   const link = linhas[2] || '';
+  const foto = linhas[3] || '';
 
-  const mensagem =
+  const legenda =
 `🔥 OFERTA DO DIA
 
 🛍️ ${produto}
@@ -31,6 +32,16 @@ bot.on('message', (msg) => {
 
 ⚡ corre antes que acabe`;
 
-  bot.sendMessage(canal, mensagem);
+  if (foto) {
+
+    bot.sendPhoto(canal, foto, {
+      caption: legenda
+    });
+
+  } else {
+
+    bot.sendMessage(canal, legenda);
+
+  }
 
 });
